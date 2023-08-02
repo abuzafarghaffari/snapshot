@@ -38,14 +38,13 @@ const setImageHandler = (img: string) => {
     const data = await getGallarys();
     render(<ImagesGridLists gallaryItems={data} setImage={setImageHandler}/>);
   
-    // Use screen.getByText to assert that each item's title is present in the rendered component
     expect(screen.getByText("Title: bird1")).toBeInTheDocument();
-    //expect(screen.getByText("Category: Beach")).toBeInTheDocument();
+    
     expect(screen.getByText("Title: mountain1")).toBeInTheDocument();
   });
 
   test('should show "No Record found" when no matching items are found', async () => {
-    // Render the GallaryList component with an empty list of gallery items
+  
     const { getGallarys } = require("../helper/api-util");
     const data = await getGallarys();
     render(<ImagesGridLists gallaryItems={[]} setImage={setImageHandler}/>);
